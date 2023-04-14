@@ -17,3 +17,6 @@ dropdownNavbarButton.addEventListener("click", (event) => {
     dropdownGroupList.style.visibility = "hidden";
   }
 });
+
+
+let listOfBestFilme
