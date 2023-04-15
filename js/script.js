@@ -69,55 +69,41 @@ topSlider.innerHTML = `
 
 let nextSlider = $.querySelector("#nextSlider");
 let prevSlider = $.querySelector("#prevSlider");
+
+function setSlideForSlidre(maincount) {
+  topSlider.innerHTML = "";
+  topSlider.insertAdjacentHTML(
+    "beforeend",
+    `
+<div class="d-flex flex-row-reverse align-items-center slide1">
+    <div class="top-left-slider col-8">
+        <h6 class="pt-4" id="titleSlider">${listOfBestFilm[maincount].title}</h6>
+        <p class="m-0" id="descSlider">
+        ${listOfBestFilm[maincount].description}
+        </p>
+        <div class="data pb-4">
+            <i class="fa fa-calendar"></i>
+            <div class="">
+                <p class="m-0">انتشار :</p>
+                <p class="m-0" id="dataSlider">${listOfBestFilm[maincount].data}</p>
+            </div>
+        </div>
+    </div>
+    <div class="top-right-slider col-4">
+        <img src="${listOfBestFilm[maincount].url}" alt="" class="w-100 h-100" id="imgSlider">
+    </div>
+</div>`
+  );
+}
+
 nextSlider.addEventListener("click", () => {
-  if (countOfSlider < listOfBestFilm.length) {
-    countOfSlider++;
-    topSlider.innerHTML = "";
-    topSlider.insertAdjacentHTML(
-      "beforeend",
-      `
-<div class="d-flex flex-row-reverse align-items-center slide1">
-    <div class="top-left-slider col-8">
-        <h6 class="pt-4" id="titleSlider">${listOfBestFilm[countOfSlider].title}</h6>
-        <p class="m-0" id="descSlider">
-        ${listOfBestFilm[countOfSlider].description}
-        </p>
-        <div class="data pb-4">
-            <i class="fa fa-calendar"></i>
-            <div class="">
-                <p class="m-0">انتشار :</p>
-                <p class="m-0" id="dataSlider">${listOfBestFilm[countOfSlider].data}</p>
-            </div>
-        </div>
-    </div>
-    <div class="top-right-slider col-4">
-        <img src="${listOfBestFilm[countOfSlider].url}" alt="" class="w-100 h-100" id="imgSlider">
-    </div>
-</div>`
-    );
-  } else {
-    topSlider.insertAdjacentHTML(
-      "beforeend",
-      `
-<div class="d-flex flex-row-reverse align-items-center slide1">
-    <div class="top-left-slider col-8">
-        <h6 class="pt-4" id="titleSlider">${listOfBestFilm[0].title}</h6>
-        <p class="m-0" id="descSlider">
-        ${listOfBestFilm[0].description}
-        </p>
-        <div class="data pb-4">
-            <i class="fa fa-calendar"></i>
-            <div class="">
-                <p class="m-0">انتشار :</p>
-                <p class="m-0" id="dataSlider">${listOfBestFilm[0].data}</p>
-            </div>
-        </div>
-    </div>
-    <div class="top-right-slider col-4">
-        <img src="${listOfBestFilm[0].url}" alt="" class="w-100 h-100" id="imgSlider">
-    </div>
-</div>`
-    );
+  countOfSlider++;
+  console.log(countOfSlider);
+  if (countOfSlider == listOfBestFilm.length) {
+    setSlideForSlidre(0);
     countOfSlider = 0;
+  }
+  if (countOfSlider < listOfBestFilm.length) {
+    setSlideForSlidre(countOfSlider);
   }
 });
