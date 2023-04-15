@@ -121,6 +121,16 @@ prevSlider.addEventListener("click", () => {
 
 const scrollPrograssLine = $.querySelector(".scroll-prograss");
 document.addEventListener('scroll', () => {
-  let scrollPrograssLineWidth = (((window.pageYOffset - 937) / (window.pageYOffset * 100))).toFixed()
-  scrollPrograssLine.style.width = Number(scrollPrograssLineWidth) + "%"
+  let scrollTop = window.scrollY
+
+  let documentHeight = document.body.clientHeight
+
+  let windowHeight = window.innerHeight
+
+  let scrollPercent = scrollTop / (documentHeight - windowHeight) * 100
+
+  scrollPrograssLine.style.width = scrollPercent.toFixed() + '%'
+
+
+  // let scrollPrograssLineWidth = (window.outerHeight - 937) / (window.pageYOffset * 100) * 10000
 })
