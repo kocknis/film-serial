@@ -45,10 +45,9 @@ let listOfBestFilm = [
     data: "12/02/1402",
   },
 ];
-
+const topSlider = $.querySelector(".top-slider");
 let countOfSlider = 0;
 
-let topSlider = $.querySelector(".top-slider");
 topSlider.innerHTML = `
 <div class="d-flex flex-row-reverse align-items-center slide1">
     <div class="top-left-slider col-8">
@@ -69,8 +68,8 @@ topSlider.innerHTML = `
     </div>
 </div>`;
 
-let nextSlider = $.querySelector("#nextSlider");
-let prevSlider = $.querySelector("#prevSlider");
+const nextSlider = $.querySelector("#nextSlider");
+const prevSlider = $.querySelector("#prevSlider");
 
 function setSlideForSlidre(maincount) {
   topSlider.innerHTML = "";
@@ -108,7 +107,6 @@ nextSlider.addEventListener("click", () => {
     setSlideForSlidre(countOfSlider);
   }
 });
-
 prevSlider.addEventListener("click", () => {
   countOfSlider--;
   if (countOfSlider === -1) {
@@ -119,3 +117,10 @@ prevSlider.addEventListener("click", () => {
     setSlideForSlidre(countOfSlider);
   }
 });
+
+
+const scrollPrograssLine = $.querySelector(".scroll-prograss");
+document.addEventListener('scroll', () => {
+  let scrollPrograssLineWidth = (((window.pageYOffset - 937) / (window.pageYOffset * 100))).toFixed()
+  scrollPrograssLine.style.width = Number(scrollPrograssLineWidth) + "%"
+})
