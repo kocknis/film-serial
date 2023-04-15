@@ -118,19 +118,9 @@ prevSlider.addEventListener("click", () => {
   }
 });
 
-
+// custom scroll bar prograss
 const scrollPrograssLine = $.querySelector(".scroll-prograss");
 document.addEventListener('scroll', () => {
-  let scrollTop = window.scrollY
-
-  let documentHeight = document.body.clientHeight
-
-  let windowHeight = window.innerHeight
-
-  let scrollPercent = scrollTop / (documentHeight - windowHeight) * 100
-
+  let scrollPercent = window.scrollY / (document.body.clientHeight - windowHeight) * 100
   scrollPrograssLine.style.width = scrollPercent.toFixed() + '%'
-
-
-  // let scrollPrograssLineWidth = (window.outerHeight - 937) / (window.pageYOffset * 100) * 10000
 })
