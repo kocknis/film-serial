@@ -17,6 +17,8 @@ dropdownNavbarButton.addEventListener("click", (event) => {
   }
 });
 
+
+// dynamic of top slider with 3 slide
 let listOfBestFilm = [
   {
     id: 1,
