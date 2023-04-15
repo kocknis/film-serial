@@ -98,10 +98,20 @@ function setSlideForSlidre(maincount) {
 
 nextSlider.addEventListener("click", () => {
   countOfSlider++;
-  console.log(countOfSlider);
   if (countOfSlider == listOfBestFilm.length) {
     setSlideForSlidre(0);
     countOfSlider = 0;
+  }
+  if (countOfSlider < listOfBestFilm.length) {
+    setSlideForSlidre(countOfSlider);
+  }
+});
+
+prevSlider.addEventListener("click", () => {
+  countOfSlider--;
+  if (countOfSlider === -1) {
+    setSlideForSlidre(listOfBestFilm.length - 1);
+    countOfSlider = 3;
   }
   if (countOfSlider < listOfBestFilm.length) {
     setSlideForSlidre(countOfSlider);
