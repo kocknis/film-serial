@@ -17,7 +17,6 @@ dropdownNavbarButton.addEventListener("click", (event) => {
   }
 });
 
-
 // dynamic of top slider with 3 slide
 let listOfBestFilm = [
   {
@@ -120,7 +119,26 @@ prevSlider.addEventListener("click", () => {
 
 // custom scroll bar prograss
 const scrollPrograssLine = $.querySelector(".scroll-prograss");
-document.addEventListener('scroll', () => {
-  let scrollPercent = window.scrollY / (document.body.clientHeight - window.innerHeight) * 100
-  scrollPrograssLine.style.width = scrollPercent.toFixed() + '%'
-})
+document.addEventListener("scroll", () => {
+  let scrollPercent =
+    (window.scrollY / (document.body.clientHeight - window.innerHeight)) * 100;
+  scrollPrograssLine.style.width = scrollPercent.toFixed() + "%";
+});
+
+
+// typy writer efect for copy write text
+const copyWriteText = $.querySelector("#copy-write");
+const textForCopyWrite = "این قالب صرفا جهت نمونه کار هست";
+let countForCopyWriteTextEfect = 0;
+
+const typeCopyWriter = () => {
+  if (countForCopyWriteTextEfect < textForCopyWrite.length) {
+    copyWriteText.innerHTML += textForCopyWrite[countForCopyWriteTextEfect];
+    countForCopyWriteTextEfect++;
+  }
+  setTimeout(() => {
+    typeCopyWriter();
+  }, 100);
+};
+
+typeCopyWriter();
