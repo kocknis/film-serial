@@ -142,3 +142,7 @@ const typeCopyWriter = () => {
 };
 
 typeCopyWriter();
+
+
+
+// start search global on web with a input
