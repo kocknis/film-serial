@@ -178,7 +178,6 @@ body {
   height: 12rem;
   padding: 0 1.5rem 0 0;
   visibility: hidden;
-  transition: 0.5s all;
 }
 
 .dropdown-nav ul li {
