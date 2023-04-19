@@ -125,7 +125,6 @@ document.addEventListener("scroll", () => {
   scrollPrograssLine.style.width = scrollPercent.toFixed() + "%";
 });
 
-
 // typy writer efect for copy write text
 const copyWriteText = $.querySelector("#copy-write");
 const textForCopyWrite = "این قالب صرفا جهت نمونه کار هست";
@@ -143,6 +142,38 @@ const typeCopyWriter = () => {
 
 typeCopyWriter();
 
-
-
 // start search global on web with a input
+let inputForSearchInWebBtn = $.querySelector(".search-bar-btn");
+
+inputForSearchInWebBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  var keyword = $.querySelector("#search-bar");
+  let words = keyword.value;
+  if(words == ""){
+    return false;
+  }
+  var word = words,
+    queue = [document.body],
+    curr;
+  while ((curr = queue.pop())) {
+    if (!curr.textContent.toUpperCase().match(word.toUpperCase())) continue;
+    for (var i = 0; i < curr.childNodes.length; ++i) {
+      switch (curr.childNodes[i].nodeType) {
+        case Node.TEXT_NODE: // 3
+          if (
+            curr.childNodes[i].textContent
+              .toUpperCase()
+              .match(word.toUpperCase())
+          ) {
+            console.log("Found!");
+            console.log(curr);
+            curr.scrollIntoView();
+          }
+          break;
+        case Node.ELEMENT_NODE: // 1
+          queue.push(curr.childNodes[i]);
+          break;
+      }
+    }
+  }
+});
