@@ -167,6 +167,7 @@ inputForSearchInWebBtn.addEventListener("click", (e) => {
           ) {
             console.log("Found!");
             console.log(curr);
+            curr.style.backgroundColor = "#FFFF00"
             curr.scrollIntoView();
           }
           break;
