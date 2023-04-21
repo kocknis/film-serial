@@ -18,8 +18,29 @@ signupFormBtn.addEventListener("click", (event) => {
     userPassEmailForSingupValue &&
     userRepeatPassEmailForSingupValue
   ) {
-    // code
-  }else{
-    alert("لطفا اینپوت ها رو به صورت کامل پر کنید :)")
+    if (userPassEmailForSingupValue == userRepeatPassEmailForSingupValue) {
+      let oldUsers = []
+      oldUsers = JSON.parse(localStorage.getItem("user"))
+
+      let userDataForRegidter = {
+        userEmail: userEmailForSingupValue,
+        userPass: userPassEmailForSingupValue,
+        userPhone: userPhoneNumberEmailForSingupValue,
+      };
+
+      console.log(oldUsers);
+
+
+      localStorage.setItem("users", JSON.stringify(oldUsers));
+      window.location.href = "http://127.0.0.1:5500/index.html";
+
+
+      alert('ثبت نام شما با موفقیت انجام شد')
+
+    } else {
+      alert("لطفا پسورد ها رو به صورت کامل پر کنید :)");
+    }
+  } else {
+    alert("لطفا اینپوت ها رو به صورت یکسان پر کنید :)");
   }
 });
